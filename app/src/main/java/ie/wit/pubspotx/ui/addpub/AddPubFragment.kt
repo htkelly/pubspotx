@@ -49,7 +49,8 @@ class AddPubFragment : Fragment() {
         when (status) {
             true -> {
                 view?.let {
-                    findNavController().popBackStack()
+                    // this wasn't working with findNavController().popBackStack() - not clear why
+                    findNavController().navigate(R.id.action_addPubFragment_to_listPubsFragment)
                 }
             }
             false -> Toast.makeText(context, getString(R.string.addPubError), Toast.LENGTH_LONG)
