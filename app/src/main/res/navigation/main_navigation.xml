@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/listPubsFragment">
+
+    <fragment
+        android:id="@+id/addPubFragment"
+        android:name="ie.wit.pubspotx.ui.addpub.AddPubFragment"
+        android:label="@string/action_addPub"
+        tools:layout="@layout/fragment_add_pub">
+        <action
+            android:id="@+id/action_addPubFragment_to_listPubsFragment"
+            app:destination="@id/listPubsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/listPubsFragment"
+        android:name="ie.wit.pubspotx.ui.listpubs.ListPubsFragment"
+        android:label="@string/action_listPubs"
+        tools:layout="@layout/fragment_list_pubs">
+        <action
+            android:id="@+id/action_listPubsFragment_to_addPubFragment"
+            app:destination="@id/addPubFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_listPubsFragment_to_pubDetailFragment"
+            app:destination="@id/pubDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ie.wit.pubspotx.ui.about.AboutFragment"
+        android:label="@string/action_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/pubDetailFragment"
+        android:name="ie.wit.pubspotx.ui.detail.PubDetailFragment"
+        android:label="Pub Detail"
+        tools:layout="@layout/fragment_pub_detail">
+        <action
+            android:id="@+id/action_pubDetailFragment_to_listPubsFragment"
+            app:destination="@id/listPubsFragment" />
+        <argument
+            android:name="pubid"
+            app:argType="string" />
+    </fragment>
+</navigation>

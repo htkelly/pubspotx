@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/addPubFragment"
+            android:icon="@drawable/ic_menu_addpub"
+            android:title="@string/action_addPub" />
+        <item
+            android:id="@+id/listPubsFragment"
+            android:icon="@drawable/ic_menu_listpubs"
+            android:title="@string/action_listPubs" />
+        <item
+            android:id="@+id/aboutFragment"
+            android:icon="@drawable/ic_menu_aboutus"
+            android:title="@string/action_about" />
+    </group>
+    <item android:title="Access Control">
+        <menu>
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@android:drawable/ic_menu_revert"
+                android:onClick="signOut"
+                android:title="@string/sign_out" />
+        </menu>
+    </item>
+</menu>
+
