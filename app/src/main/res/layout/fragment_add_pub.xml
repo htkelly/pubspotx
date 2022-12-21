@@ -72,13 +72,20 @@
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPubSubtitle">
+        app:layout_constraintTop_toBottomOf="@+id/addPubSubtitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:expandedHintEnabled="false"
+        tools:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/HintText"
+        app:counterEnabled="true"
+        app:counterMaxLength="12">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editPubName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pub_name" />
+            android:hint="@string/pub_name"
+            android:maxLength="12"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -88,13 +95,21 @@
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pubNameInput">
+        app:layout_constraintTop_toBottomOf="@+id/pubNameInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:expandedHintEnabled="false"
+        tools:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/HintText"
+        app:counterEnabled="true"
+        app:counterMaxLength="140">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editPubDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pub_description" />
+            android:hint="@string/pub_description"
+            android:lines="4"
+            android:maxLength="140"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <RatingBar

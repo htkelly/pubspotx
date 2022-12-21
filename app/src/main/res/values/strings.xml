@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">PubspotX</string>
     <string name="addPubTitle">Welcome</string>
-    <string name="addPubSubtitle">Add a pub</string>
+    <string name="addPubSubtitle">Add and rate a pub...</string>
+    <string name="editPubTitle">Welcome</string>
+    <string name="editPubSubtitle">Edit this pub</string>
     <string name="addButton">Add</string>
     <string name="pubListTitle">Pubs</string>
     <string name="action_addPub">Add Pub</string>
@@ -14,7 +16,7 @@
     <string name="nav_header_subtitle">loggedinuser@pubspot.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="action_about">About Us</string>
+    <string name="action_about">About PubspotX</string>
     <string name="aboutus_title">PubspotX</string>
     <string name="aboutus_message">Welcome to PubspotX!\n\nLog and rate your favourite pubs!\n\n Enjoy alcohol responsibly!!</string>
 
