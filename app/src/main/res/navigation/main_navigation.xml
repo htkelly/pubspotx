@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/pubDetailFragment"
         android:name="ie.wit.pubspotx.ui.detail.PubDetailFragment"
-        android:label="Pub Detail"
+        android:label="@string/pubDetails"
         tools:layout="@layout/fragment_pub_detail">
         <action
             android:id="@+id/action_pubDetailFragment_to_listPubsFragment"
