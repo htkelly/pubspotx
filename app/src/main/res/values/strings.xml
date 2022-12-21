@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">PubspotX</string>
     <string name="addPubTitle">Welcome</string>
-    <string name="addPubSubtitle">Add a pub</string>
+    <string name="addPubSubtitle">Add and rate a pub...</string>
+    <string name="editPubTitle">Welcome</string>
+    <string name="editPubSubtitle">Edit this pub</string>
     <string name="addButton">Add</string>
     <string name="pubListTitle">Pubs</string>
     <string name="action_addPub">Add Pub</string>
