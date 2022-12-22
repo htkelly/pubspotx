@@ -3,13 +3,16 @@ package ie.wit.pubspotx.ui.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -21,14 +24,16 @@ import com.google.firebase.auth.FirebaseUser
 import ie.wit.pubspotx.R
 import ie.wit.pubspotx.databinding.HomeBinding
 import ie.wit.pubspotx.databinding.NavHeaderBinding
+import ie.wit.pubspotx.dialogs.SetThemeDialog
 import ie.wit.pubspotx.firebase.FirebaseImageManager
 import ie.wit.pubspotx.ui.auth.LoggedInViewModel
 import ie.wit.pubspotx.ui.auth.Login
 import ie.wit.pubspotx.utils.readImageUri
 import ie.wit.pubspotx.utils.showImagePicker
 import timber.log.Timber
+import timber.log.Timber.i
 
-class Home : AppCompatActivity() {
+class Home : AppCompatActivity(), SetThemeDialog.SetThemeDialogListener {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var homeBinding: HomeBinding
@@ -166,5 +171,24 @@ class Home : AppCompatActivity() {
                     else -> {}
                 }
             }
+    }
+
+    fun showSetThemeDialog(item: MenuItem) {
+        val dialog = SetThemeDialog()
+        dialog.show(this.supportFragmentManager, "SetThemeDialogFragment")
+    }
+
+    override fun onSelectLightMode(dialog: DialogFragment) {
+        setDefaultNightMode(MODE_NIGHT_NO)
+    }
+
+    override fun onSelectDarkMode(dialog: DialogFragment) {
+        i("Setting dark mode")
+        setDefaultNightMode(MODE_NIGHT_YES)
+    }
+
+    override fun onSelectSystemDefault(dialog: DialogFragment) {
+        i("Setting system default theme")
+        setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM)
     }
 }
