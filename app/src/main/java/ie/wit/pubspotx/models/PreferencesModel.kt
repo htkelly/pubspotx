@@ -7,5 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity
-data class PreferencesModel (@PrimaryKey var userid: String = "",
-                            var theme: Int = -1) : Parcelable
+data class PreferencesModel(
+    @PrimaryKey var userid: String = "",
+    var theme: Int = -1
+) : Parcelable

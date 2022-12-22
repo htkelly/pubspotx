@@ -90,12 +90,16 @@ class Home : AppCompatActivity(), SetThemeDialog.SetThemeDialogListener {
                             MODE_NIGHT_YES -> setDefaultNightMode(MODE_NIGHT_YES)
                             else -> setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM)
                         }
-                    }
-                    else {
+                    } else {
                         setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM)
                         i("Could not find user preferences -- creating a db entry for this user's preferences")
-                        createLoggedInUserPreferences(PreferencesModel(userid = firebaseUser.uid, theme = MODE_NIGHT_FOLLOW_SYSTEM))
-                   }
+                        createLoggedInUserPreferences(
+                            PreferencesModel(
+                                userid = firebaseUser.uid,
+                                theme = MODE_NIGHT_FOLLOW_SYSTEM
+                            )
+                        )
+                    }
                 }
             }
         })
@@ -204,18 +208,23 @@ class Home : AppCompatActivity(), SetThemeDialog.SetThemeDialogListener {
         return preferences.findByUserId(firebaseUser.uid)
     }
 
-    private suspend fun createLoggedInUserPreferences(userPreferences: PreferencesModel){
+    private suspend fun createLoggedInUserPreferences(userPreferences: PreferencesModel) {
         preferences.create(userPreferences)
     }
 
     private suspend fun updateCurrentUserThemePreference(theme: Int) {
         val loggedInUserId = loggedInViewModel.liveFirebaseUser.value?.uid
-        if (loggedInUserId != null) preferences.update(PreferencesModel(userid = loggedInUserId, theme = theme))
+        if (loggedInUserId != null) preferences.update(
+            PreferencesModel(
+                userid = loggedInUserId,
+                theme = theme
+            )
+        )
     }
 
     override fun onSelectLightMode(dialog: DialogFragment) {
         setDefaultNightMode(MODE_NIGHT_NO)
-        GlobalScope.launch ( Dispatchers.Main ) {
+        GlobalScope.launch(Dispatchers.Main) {
             updateCurrentUserThemePreference(MODE_NIGHT_NO)
         }
     }
@@ -223,7 +232,7 @@ class Home : AppCompatActivity(), SetThemeDialog.SetThemeDialogListener {
     override fun onSelectDarkMode(dialog: DialogFragment) {
         i("Setting dark mode")
         setDefaultNightMode(MODE_NIGHT_YES)
-        GlobalScope.launch ( Dispatchers.Main ) {
+        GlobalScope.launch(Dispatchers.Main) {
             updateCurrentUserThemePreference(MODE_NIGHT_YES)
         }
     }
@@ -231,7 +240,7 @@ class Home : AppCompatActivity(), SetThemeDialog.SetThemeDialogListener {
     override fun onSelectSystemDefault(dialog: DialogFragment) {
         i("Setting system default theme")
         setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM)
-        GlobalScope.launch ( Dispatchers.Main ) {
+        GlobalScope.launch(Dispatchers.Main) {
             updateCurrentUserThemePreference(MODE_NIGHT_FOLLOW_SYSTEM)
         }
     }

@@ -11,9 +11,10 @@ class PreferencesStoreRoom(val context: Context) : PreferencesStore {
     var dao: PreferencesDao
 
     init {
-        val database = Room.databaseBuilder(context, Database::class.java, "pubspotx_preferences.db")
-            .fallbackToDestructiveMigration()
-            .build()
+        val database =
+            Room.databaseBuilder(context, Database::class.java, "pubspotx_preferences.db")
+                .fallbackToDestructiveMigration()
+                .build()
         dao = database.preferencesDao()
     }
 
