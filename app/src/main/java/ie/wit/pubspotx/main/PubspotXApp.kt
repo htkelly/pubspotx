@@ -9,6 +9,5 @@ class PubspotXApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         Timber.i("PubspotX Application Started")
-        //setDefaultNightMode(MODE_NIGHT_YES)
     }
 }
