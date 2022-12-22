@@ -17,7 +17,7 @@ class SetThemeDialog : DialogFragment() {
         fun onSelectSystemDefault(dialog: DialogFragment)
     }
 
-    override  fun onAttach(context: Context) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
             listener = context as SetThemeDialogListener
