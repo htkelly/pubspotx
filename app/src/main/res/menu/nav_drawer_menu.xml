@@ -16,6 +16,15 @@
             android:icon="@drawable/ic_menu_about"
             android:title="@string/action_about" />
     </group>
+    <item android:title="@string/group_preferences">
+        <menu>
+            <item
+                android:id="@+id/nav_theme"
+                android:icon="@drawable/ic_menu_theme"
+                android:onClick="showSetThemeDialog"
+                android:title="@string/action_theme" />
+        </menu>
+    </item>
     <item android:title="Access Control">
         <menu>
             <item

@@ -8,9 +8,8 @@
     <string name="pubListTitle">Pubs</string>
     <string name="action_addPub">Add Pub</string>
     <string name="action_listPubs">List Pubs</string>
-    <string name="action_share">Share</string>
-    <string name="action_send">Send</string>
-    <string name="group_communicate">Communicate</string>
+    <string name="action_theme">Theme</string>
+    <string name="group_preferences">Preferences</string>
 
     <string name="nav_header_title">PubspotX</string>
     <string name="nav_header_subtitle">loggedinuser@pubspot.com</string>
@@ -30,6 +29,11 @@
 
     <string name="update">Update</string>
     <string name="delete">Delete</string>
+
+    <string name="dialog_set_theme">Select Theme</string>
+    <string name="choice_theme_light">Light mode</string>
+    <string name="choice_theme_dark">Dark mode</string>
+    <string name="choice_theme_system">System default</string>
 
     <string name="messageLoading">Please Wait while Pubs are Loading...</string>
 
