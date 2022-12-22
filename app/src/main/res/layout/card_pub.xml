@@ -45,16 +45,17 @@
                 android:textSize="24sp"
                 tools:text="A pub" />
 
-            <RatingBar style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+            <RatingBar
                 android:id="@+id/rating"
+                style="@android:style/Widget.DeviceDefault.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pubName"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_toRightOf="@id/imageIcon"
-                android:rating="@{pub.rating}"
-                android:isIndicator="true" />
+                android:isIndicator="true"
+                android:rating="@{pub.rating}" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
