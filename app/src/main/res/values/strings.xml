@@ -19,7 +19,7 @@
     <string name="aboutus_title">PubspotX</string>
     <string name="aboutus_message">Welcome to PubspotX!\n\nLog and rate your favourite pubs!\n\n Enjoy alcohol responsibly!!</string>
 
-    <string name="pubsNotFound">No pubs Yet…\nGo add some pubs!</string>
+    <string name="pubsNotFound">No pubs found...</string>
     <string name="addPubError">Error : Couldn\'t Add a Pub…</string>
     <string name="pubDetails">Pub Details</string>
 
@@ -63,4 +63,6 @@
     <string name="emailpassword_title_text">Please Login Below</string>
     <string name="pub_name">Pub name</string>
     <string name="pub_description">Pub description</string>
+    <string name="action_togglepubs">action_togglePubs</string>
+    <string name="action_search">Search</string>
 </resources>
