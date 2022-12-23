@@ -36,6 +36,7 @@ class ListPubsFragment : Fragment(), PubClickListener {
     lateinit var loader: AlertDialog
     private val listPubsViewModel: ListPubsViewModel by activityViewModels()
     private val loggedInViewModel: LoggedInViewModel by activityViewModels()
+    private var showAll: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -105,8 +106,14 @@ class ListPubsFragment : Fragment(), PubClickListener {
                 togglePubs.isChecked = false
 
                 togglePubs.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) listPubsViewModel.loadAll()
-                    else listPubsViewModel.load()
+                    if (isChecked) {
+                        listPubsViewModel.loadAll()
+                        showAll = true
+                    }
+                    else {
+                        listPubsViewModel.load()
+                        showAll = false
+                    }
                 }
 
                 val searchItem = menu.findItem(R.id.search)
@@ -123,7 +130,10 @@ class ListPubsFragment : Fragment(), PubClickListener {
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) listPubsViewModel.loadFiltered(query)
+                if (query != null) {
+                    if (showAll) listPubsViewModel.loadAllFiltered(query)
+                    else listPubsViewModel.loadFiltered(query)
+                }
                 return false
             }
 
