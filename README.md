@@ -4,13 +4,13 @@ A new version of Pubspot, this time implementing an MVVM design pattern and mult
 
 ## Functionality
 
-On launching the app, users can sign up or log in with a Google account or an an email or password. This is implemented using Firebase authenticaton.
+On launching the app, users can sign up or log in using a Google account or basic credentials. This is implemented using Firebase authentication.
 
 After signing in, users can navigate the app using a nav drawer. From the nav drawer they can sign out, change the app theme, and navigate to fragments for adding pubs, listing pubs, and displaying app information. They can also tap their profile picture to change it.
 
 The add pubs fragment facilitates adding pubs with a rating, name and description (TextInputLayout and RatingBar elements are used for this).
 
-The list pubs fragment displays a list of pubs. This defaults to a list of the pubs added by the logged in user, and can be toggled to show a list of all pubs including those added by other users. Either set of results can be filtered using a SearchView in the toolbar. When in edit mode, the user can swipe left on a pub to delete it, or swipe right to launch the detail fragment, where they can view and edit the pub's name, rating and description.
+The list pubs fragment displays a list of pubs. This defaults to a list of the pubs added by the logged in user, and a toolbar switch can be toggled to show a list of all pubs including those added by other users. Either set of results can be filtered using a SearchView in the toolbar. When in viewing their own pubs, the user can swipe left on a pub to delete it, or swipe right to navigate to the detail fragment, where they can view and edit the pub's name, rating and description.
 
 The about fragment displays some information about the app.
 
@@ -30,9 +30,11 @@ The user's theme preference is persisted locally using the Room persistence libr
 
 ## Personal Statement
 
-My Pubspot app for assignment one was built by using Placemark as the starting point and adapting it. Similarly, this app uses DonationX as the starting point, and adapts it into a new version of Pubspot, PubspotX. I choose to do this in order to leverage DonationX's nav drawer and MVVM design pattern. All of the DonationX-derived components have been adapted and changed.
+My Pubspot app for assignment one was built by using Placemark as the starting point and adapting it. Similarly, this app uses DonationX as the starting point, and adapts it into a new version of Pubspot, which I've called PubspotX. I choose to do this in order to leverage DonationX's nav drawer and MVVM design pattern. All of the DonationX-derived components have been adapted and changed.
 
-I would have liked to include pub location data, as in the original implementation of Pubspot, and started work on this in the feature/lcation branch of this repo, however I have not had adequate time to refactor the map and location functionality from the first assignment into the MVVM architecture of PubspotX.
+I would have liked to include pub location data, as in the original implementation of Pubspot, and started work on this in the feature/location branch of this repo, however I have not had adequate time to refactor the map and location functionality from the first assignment into the MVVM architecture of PubspotX.
+
+I also would have liked to allow users to set an image for each pub, as in the previous version, however for now each pub is displayed with the profile image of the user who added it.
 
 As far as my achievements on this assignment go, I am most pleased by the implementation of a dark theme and local persistence of user preferences. The Room persistence features from the Placemark case study were adapted into this app to achieve this.
 
