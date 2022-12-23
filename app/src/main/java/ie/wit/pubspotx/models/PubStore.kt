@@ -15,6 +15,12 @@ interface PubStore {
         MutableLiveData<List<PubModel>>
     )
 
+    fun findFiltered(
+        query: String,
+        pubsList:
+        MutableLiveData<List<PubModel>>
+    )
+
     fun findById(
         userid: String, pubid: String,
         pub: MutableLiveData<PubModel>

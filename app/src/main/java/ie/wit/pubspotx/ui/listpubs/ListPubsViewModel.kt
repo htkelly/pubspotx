@@ -52,6 +52,16 @@ class ListPubsViewModel : ViewModel() {
             Timber.i("List pubs LoadAll Error : $e.message")
         }
     }
+
+    fun loadFiltered(query: String) {
+        try {
+            readOnly.value = true
+            FirebaseDBManager.findFiltered(query, pubsList)
+            Timber.i("List pubs LoadAll Success : ${pubsList.value.toString()}")
+        } catch (e: Exception) {
+            Timber.i("List pubs LoadAll Error : $e.message")
+        }
+    }
 }
 
 
