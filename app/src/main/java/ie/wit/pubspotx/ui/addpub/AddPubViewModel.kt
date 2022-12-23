@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
 import ie.wit.pubspotx.firebase.FirebaseDBManager
+import ie.wit.pubspotx.firebase.FirebaseImageManager
 import ie.wit.pubspotx.models.PubModel
 
 class AddPubViewModel : ViewModel() {
@@ -19,7 +20,7 @@ class AddPubViewModel : ViewModel() {
         pub: PubModel
     ) {
         status.value = try {
-            //pub.profilepic = FirebaseImageManager.imageUri.value.toString()
+            pub.profilepic = FirebaseImageManager.imageUri.value.toString()
             FirebaseDBManager.create(firebaseUser, pub)
             true
         } catch (e: IllegalArgumentException) {

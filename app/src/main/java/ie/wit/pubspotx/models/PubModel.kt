@@ -12,7 +12,8 @@ data class PubModel(
     var uid: String? = "",
     var name: String = "",
     var description: String = "",
-    var rating: Int = 0
+    var rating: Int = 0,
+    var profilepic: String = ""
 ) : Parcelable {
     @Exclude
     fun toMap(): Map<String, Any?> {
@@ -21,9 +22,8 @@ data class PubModel(
             "name" to name,
             "description" to description,
             "rating" to rating,
+            "profilepic" to profilepic
         )
     }
 }
-
-
 

@@ -52,6 +52,26 @@ class ListPubsViewModel : ViewModel() {
             Timber.i("List pubs LoadAll Error : $e.message")
         }
     }
+
+    fun loadFiltered(query: String) {
+        try {
+            readOnly.value = false
+            FirebaseDBManager.findFiltered(liveFirebaseUser.value?.uid!!, query, pubsList)
+            Timber.i("Pubs List Load Success : ${pubsList.value.toString()}")
+        } catch (e: Exception) {
+            Timber.i("Pubs List Load Error : $e.message")
+        }
+    }
+
+    fun loadAllFiltered(query: String) {
+        try {
+            readOnly.value = true
+            FirebaseDBManager.findFiltered(query, pubsList)
+            Timber.i("List pubs LoadAll Success : ${pubsList.value.toString()}")
+        } catch (e: Exception) {
+            Timber.i("List pubs LoadAll Error : $e.message")
+        }
+    }
 }
 
 

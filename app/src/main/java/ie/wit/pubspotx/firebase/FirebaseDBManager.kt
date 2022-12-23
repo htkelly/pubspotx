@@ -33,6 +33,51 @@ object FirebaseDBManager : PubStore {
             })
     }
 
+    override fun findFiltered(query: String, pubsList: MutableLiveData<List<PubModel>>) {
+        database.child("pubs")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Timber.i("Firebase Pubspot error : ${error.message}")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val localList = ArrayList<PubModel>()
+                    val children = snapshot.children
+                    children.forEach {
+                        val pub = it.getValue(PubModel::class.java)
+                        localList.add(pub!!)
+                    }
+                    database.child("pubs")
+                        .removeEventListener(this)
+
+                    pubsList.value = localList.filter { s -> s.name.contains(query) }
+                }
+            })
+    }
+
+    override fun findFiltered(userid: String, query: String, pubsList: MutableLiveData<List<PubModel>>) {
+
+        database.child("user-pubs").child(userid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Timber.i("Firebase Pubspot error : ${error.message}")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val localList = ArrayList<PubModel>()
+                    val children = snapshot.children
+                    children.forEach {
+                        val pub = it.getValue(PubModel::class.java)
+                        localList.add(pub!!)
+                    }
+                    database.child("user-pubs").child(userid)
+                        .removeEventListener(this)
+
+                    pubsList.value = localList.filter { s -> s.name.contains(query) }
+                }
+            })
+    }
+
     override fun findAll(userid: String, pubsList: MutableLiveData<List<PubModel>>) {
 
         database.child("user-pubs").child(userid)

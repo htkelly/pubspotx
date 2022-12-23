@@ -2,9 +2,12 @@ package ie.wit.pubspotx.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.wit.pubspotx.databinding.CardPubBinding
 import ie.wit.pubspotx.models.PubModel
+import ie.wit.pubspotx.utils.customTransformation
 
 
 interface PubClickListener {
@@ -44,6 +47,11 @@ class PubAdapter constructor(
         fun bind(pub: PubModel, listener: PubClickListener) {
             binding.root.tag = pub
             binding.pub = pub
+            Picasso.get().load(pub.profilepic.toUri())
+                .resize(200,200)
+                .transform(customTransformation())
+                .centerCrop()
+                .into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onPubClick(pub) }
             binding.executePendingBindings()
         }

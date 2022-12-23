@@ -1,9 +1,14 @@
 package ie.wit.pubspotx.ui.listpubs
 
 import android.app.AlertDialog
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView.OnQueryTextListener
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -31,6 +36,7 @@ class ListPubsFragment : Fragment(), PubClickListener {
     lateinit var loader: AlertDialog
     private val listPubsViewModel: ListPubsViewModel by activityViewModels()
     private val loggedInViewModel: LoggedInViewModel by activityViewModels()
+    private var showAll: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,7 +91,8 @@ class ListPubsFragment : Fragment(), PubClickListener {
     }
 
     private fun setupMenu() {
-        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider,
+            SearchView.OnQueryTextListener {
             override fun onPrepareMenu(menu: Menu) {
                 // Handle for example visibility of menu items
             }
@@ -99,9 +106,19 @@ class ListPubsFragment : Fragment(), PubClickListener {
                 togglePubs.isChecked = false
 
                 togglePubs.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) listPubsViewModel.loadAll()
-                    else listPubsViewModel.load()
+                    if (isChecked) {
+                        listPubsViewModel.loadAll()
+                        showAll = true
+                    }
+                    else {
+                        listPubsViewModel.load()
+                        showAll = false
+                    }
                 }
+
+                val searchItem = menu.findItem(R.id.search)
+                val searchView: SearchView = searchItem.actionView as SearchView
+                searchView.setOnQueryTextListener(this)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -110,6 +127,18 @@ class ListPubsFragment : Fragment(), PubClickListener {
                     menuItem,
                     requireView().findNavController()
                 )
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    if (showAll) listPubsViewModel.loadAllFiltered(query)
+                    else listPubsViewModel.loadFiltered(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
@@ -165,3 +194,4 @@ class ListPubsFragment : Fragment(), PubClickListener {
         _fragBinding = null
     }
 }
+
