@@ -4,7 +4,7 @@ A new version of Pubspot, this time implementing an MVVM design pattern and mult
 
 ## Functionality
 
-On launching the app, users can sign up or log in with a google account or an an email or password. This is implemented using Firebase authenticaton.
+On launching the app, users can sign up or log in with a Google account or an an email or password. This is implemented using Firebase authenticaton.
 
 After signing in, users can navigate the app using a nav drawer. From the nav drawer they can sign out, change the app theme, and navigate to fragments for adding pubs, listing pubs, and displaying app information. They can also tap their profile picture to change it.
 
@@ -14,7 +14,7 @@ The list pubs fragment displays a list of pubs. This defaults to a list of the p
 
 The about fragment displays some information about the app.
 
-User profile images are persisted in Firebase cloud storage. Pub data is persisted in Firebase realtime database. User preferences (i.e. app theme setting) are persisted in a local SQLite database using the Room persistence library.
+User profile images are persisted in Firebase cloud storage. Pub data is persisted in Firebase Realtime Database. User preferences (i.e. app theme setting) are persisted in a local SQLite database using the Room persistence library.
 
 ## UML Diagram
 
@@ -24,9 +24,9 @@ User profile images are persisted in Firebase cloud storage. Pub data is persist
 
 The app uses an MVVM design pattern with fragment based navigation. This was developed by using the DonationX case study as the initial codebase and building the app out from there.
 
-For UX, a nav drawer is implemented for navigating between fragments, as well as signing out, changing profile picture, and changing the app theme.
+For UX, a nav drawer is implemented for navigating between fragments, as well as signing out, changing the user's profile picture, and changing the app theme.
 
-The user's theme preference is persisted locally using the Room persistence library, as persisting this is good for UX but it is not data that should necessarily be stored in the cloud.
+The user's theme preference is persisted locally using the Room persistence library, as persisting this data is nice for UX but it is not data that should necessarily be stored in the cloud.
 
 ## Personal Statement
 
