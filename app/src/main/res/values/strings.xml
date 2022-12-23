@@ -63,4 +63,6 @@
     <string name="emailpassword_title_text">Please Login Below</string>
     <string name="pub_name">Pub name</string>
     <string name="pub_description">Pub description</string>
+    <string name="action_togglepubs">action_togglePubs</string>
+    <string name="action_search">Search</string>
 </resources>

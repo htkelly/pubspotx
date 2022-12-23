@@ -9,8 +9,16 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/search"
+        android:title="@string/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+
+    <item
         android:id="@+id/togglePubs"
-        android:title=""
+        android:title="@string/action_togglepubs"
         app:actionLayout="@layout/togglebutton_layout"
         app:showAsAction="always" />
+
 </menu>
